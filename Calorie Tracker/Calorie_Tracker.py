@@ -16,7 +16,16 @@ button = customtkinter.CTkButton(master=app, text="CTkButton", command=button_fu
 button.place(relx=0.5, rely=0.5, anchor=customtkinter.CENTER)
 
 
+def weight_input(event):
+    if weight_input_button.get().isdigit():
+        print("IS A NUMBER")
+    else:
+        print("IS NOT A NUMBER")
 
+weight_input_button = customtkinter.CTkEntry(master=app, placeholder_text="enter your current weight")
+weight_input_button.place(relx=0.1, rely=0.1, anchor=customtkinter.CENTER)
+
+weight_input_button.bind("<KeyRelease>", weight_input)
 
 def water_formula():
     return (weight_input()/2)*29.574
