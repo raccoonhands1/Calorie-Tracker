@@ -3,7 +3,7 @@ import tkinter
 import customtkinter
 
 customtkinter.set_appearance_mode("system")  # Modes: system (default), light, dark
-customtkinter.set_default_color_theme("../Calorie Tracker/Color_Scheme2.json")
+customtkinter.set_default_color_theme("../Calorie Tracker/default.json")
 
 app = customtkinter.CTk()  # create CTk window like you do with the Tk window
 app.geometry("800x600")
@@ -33,11 +33,11 @@ def activity_input_dropdown_callback(choice):
     print("option menu callback: " + activity_input_dropdown_var)
 
 weight_input_entry = customtkinter.CTkEntry(master=app, placeholder_text="enter your current weight in pounds")
-weight_input_entry.place(relx=0.1, rely=0.1, anchor=customtkinter.CENTER)
+weight_input_entry.pack(padx=20, pady=20)
 weight_input_entry.bind("<KeyRelease>", weight_input)
 
 water_formula_textbox = customtkinter.CTkLabel(app, text="", fg_color="transparent")
-water_formula_textbox.place(relx=0.2, rely=0.2, anchor=customtkinter.CENTER)
+water_formula_textbox.pack(padx=20, pady=20)
 weight_input_entry.bind("<KeyRelease>", button_press) #on key release, button press
 
 activity_input_dropdown_var = customtkinter.StringVar(value="--LEVEL OF ACTIVITY--")
@@ -48,23 +48,29 @@ activity_input_dropdown = customtkinter.CTkOptionMenu(app, values=["sedentary",
                                                                    "extremely active"],
                                                      command=activity_input_dropdown_callback,
                                                      variable=activity_input_dropdown_var)
-activity_input_dropdown.place(relx=0.8, rely=0.8, anchor=customtkinter.CENTER)
+activity_input_dropdown.pack(padx=20, pady=20)
 
 def unit_sbutton_event(value):
     unit_sbutton_var = value
     print("button toggled: " + unit_sbutton_var)
+    return value
 
 unit_sbutton_var = customtkinter.StringVar(value="ft/in")
 unit_sbutton = customtkinter.CTkSegmentedButton(app, values=["ft/in","cm"], 
                                                 command=unit_sbutton_event,
                                                 variable=unit_sbutton_var)
 unit_sbutton.set("ft/in")
-unit_sbutton.place(relx=0.3, rely=0.3, anchor=customtkinter.CENTER)
+unit_sbutton.pack()
 
-def height_input_event(event):
-    return 0
+def height_slider_event(value, unit=""): ###slider###
+    if(unit == "ft/in"):
+        print("IN FEET: " + str(value))
+    else:
+        print(unit)
+        print("IN CENTIMETERS:" + str(value))
 
-
+height_slider = customtkinter.CTkSlider(app, from_=80, to=230, command=height_slider_event)
+height_slider.pack(padx=20, pady=20)
 
 
  
