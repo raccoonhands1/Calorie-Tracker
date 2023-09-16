@@ -51,7 +51,8 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="module1.json" />
+    <Content Include="Color_Scheme2.json" />
+    <Content Include="Color_Scheme1.json" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

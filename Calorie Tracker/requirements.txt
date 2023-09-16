@@ -1,2 +1,1 @@
-#requirements.txt
 customtkinter==23.1.2
